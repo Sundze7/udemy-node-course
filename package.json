@@ -1,0 +1,25 @@
+{
+  "name": "node-farm",
+  "version": "1.0.0",
+  "description": "learning node.js",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Sundze7/udemy-node-course.git"
+  },
+  "author": "Sundze Mustapha",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Sundze7/udemy-node-course/issues"
+  },
+  "homepage": "https://github.com/Sundze7/udemy-node-course#readme",
+  "dependencies": {
+    "slugify": "^1.6.5"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.21"
+  }
+}
