@@ -6,7 +6,7 @@ const app = express();
 
 // middlewares
 app.use(morgan("dev"));
-app.use(express.json());
+app.use(express.json()); // body parser middleware
 
 app.use((req, res, next) => {
   console.log("hello from the middleware");
@@ -33,6 +33,7 @@ const tours = JSON.parse(
 );
 
 // Route handlers or fxns
+//TOURS
 const getAllTours = (req, res) => {
   res.status(200).json({
     status: "success",
@@ -125,6 +126,42 @@ const deleteTour = (req, res) => {
   });
 };
 
+//USERS
+const getUser = (req, res) => {
+  res.status(500).json({
+    status: "error",
+    message: "this route is not yet defined",
+  });
+};
+
+const createUser = (req, res) => {
+  res.status(500).json({
+    status: "error",
+    message: "this route is not yet defined",
+  });
+};
+
+const updateUser = (req, res) => {
+  res.status(500).json({
+    status: "error",
+    message: "this route is not yet defined",
+  });
+};
+
+const deleteUser = (req, res) => {
+  res.status(500).json({
+    status: "error",
+    message: "this route is not yet defined",
+  });
+};
+
+const getAllUsers = (req, res) => {
+  res.status(500).json({
+    status: "error",
+    message: "this route is not yet defined",
+  });
+};
+
 // End-points or Routes
 
 //app.get("/api/v1/tours", getAllTours);
@@ -140,6 +177,14 @@ app
   .get(getTour)
   .patch(updateTour)
   .delete(deleteTour);
+
+app.route("/api/v1/users").get(getAllUsers).post(createUser);
+
+app
+  .route("/api/v1/users/:id")
+  .get(getUser)
+  .patch(updateUser)
+  .delete(deleteUser);
 
 //Start Server
 const port = 3000;
