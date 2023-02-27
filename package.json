@@ -2,9 +2,9 @@
   "name": "node-farm",
   "version": "1.0.0",
   "description": "learning node.js",
-  "main": "index.js",
+  "main": "app.js",
   "scripts": {
-    "start": "nodemon index.js"
+    "start": "nodemon server.js"
   },
   "repository": {
     "type": "git",
