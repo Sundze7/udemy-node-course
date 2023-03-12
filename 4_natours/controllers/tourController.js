@@ -26,6 +26,16 @@ exports.getAllTours = async (req, res) => {
       query = query.sort("-createdAt");
     }
 
+    //3. FIELD LIMITING
+    if (req.query.fields) {
+      const fields = req.query.fields.split(",").join(" ");
+      query = query.select("name difficulty price");
+      // outputs only specified fields
+    } else {
+      query = query.select("-__v");
+      // the minus sign means to exclude this field in the output
+    }
+
     //EXECUTE QUERY
     const tours = await query;
 
