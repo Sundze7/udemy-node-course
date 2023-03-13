@@ -36,6 +36,20 @@ exports.getAllTours = async (req, res) => {
       // the minus sign means to exclude this field in the output
     }
 
+    //4. PAGINATION
+    const page = req.query.page * 1 || 1;
+    const limit = req.query.limit * 1 || 100;
+    const skip = (page - 1) * limit;
+
+    //page=3&limit=10, 1-10: page 1, 11-20: page 2, 21-30: page 3
+    query = query.skip(skip).limit(limit);
+    // num of entry to skip b4 starting d query of limited num
+
+    if (req.query.page) {
+      const newTours = await Tour.countDocuments();
+      if (skip >= newTours) throw new ErrorEvent("this page does not exist");
+    }
+
     //EXECUTE QUERY
     const tours = await query;
 
