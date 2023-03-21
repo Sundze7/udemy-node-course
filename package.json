@@ -17,7 +17,8 @@
   },
   "homepage": "https://github.com/Sundze7/udemy-node-course#readme",
   "dependencies": {
-    "slugify": "^1.6.5"
+    "slugify": "^1.6.5",
+    "superagent": "^8.0.9"
   },
   "devDependencies": {
     "nodemon": "^2.0.21"
