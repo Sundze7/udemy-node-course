@@ -23,7 +23,8 @@
     "mongoose": "^5.13.16",
     "morgan": "^1.10.0",
     "slugify": "^1.6.5",
-    "superagent": "^8.0.9"
+    "superagent": "^8.0.9",
+    "validator": "^13.9.0"
   },
   "devDependencies": {
     "nodemon": "^2.0.21"
