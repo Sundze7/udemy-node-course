@@ -22,3 +22,23 @@
 //   }
 //   next();
 // };
+
+// exports.getTour = (req, res) => {
+//     console.log(req.params);
+//multiply by 1 to covert id type to a number
+//const id = req.params.id * 1;
+// either TEST 1
+//   if (id > tours.length) {
+//     return res.status(404).json({
+//       status: "fail",
+//       message: "invalid ID",
+//     });
+//   }
+// const tour = tours.find((el) => el.id === id);
+// res.status(200).json({
+//   status: "success",
+//   data: {
+//     tour,
+//   },
+// });
+// };
