@@ -73,7 +73,7 @@ exports.protect = catchAsync(async (req, res, next) => {
   const decoded = await promisify(jwt.verify)(token, process.env.JWT_SECRET);
 
   //3. Check if user exists
-  const currentUser = User.findById(decoded.id);
+  const currentUser = await User.findById(decoded.id);
   if (!currentUser) {
     return next(
       new AppError("The user assigned to this token no longer exists ", 401)
@@ -91,3 +91,15 @@ exports.protect = catchAsync(async (req, res, next) => {
   req.user = currentUser;
   next();
 });
+
+exports.restrictTo = (...roles) => {
+  return (req, res, next) => {
+    // roles = array e.g ['admin', 'lead-guide]
+    if (!roles.includes(req.user.role)) {
+      return next(
+        new AppError("You do not have permission to perform this action", 403)
+      );
+    }
+    next();
+  };
+};
