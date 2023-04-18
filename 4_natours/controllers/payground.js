@@ -88,3 +88,111 @@
 //   const newTours = await Tour.countDocuments();
 //   if (skip >= newTours) throw new ErrorEvent("this page does not exist");
 // }
+
+//.
+// exports.updateTour = catchAsync(async (req, res, next) => {
+//   const tour = await Tour.findByIdAndUpdate(req.params.id, req.body, {
+//     new: true,
+//     runValidators: true,
+//   });
+
+//   if (!tour) {
+//     return next(new AppError("No tour found with the ID", 404));
+//   }
+
+//   res.status(200).json({
+//     status: "success",
+//     data: {
+//       tour,
+//     },
+//   });
+// });
+
+//................
+// exports.createTour = catchAsync(async (req, res, next) => {
+//     //method 1: creating a model and calling the save() on d new doc
+//     //const newTour = new Tour({})
+//     //newTour.save()
+
+//     //method 2: calling save() directly on d model
+//     const newTour = await Tour.create(req.body);
+
+//     res.status(201).json({
+//       status: "success",
+//       data: {
+//         tour: newTour,
+//       },
+//     });
+//   });
+
+//............................
+// exports.deleteTour = catchAsync(async (req, res, next) => {
+//   const tour = await Tour.findByIdAndDelete(req.params.id);
+
+//   if (!tour) {
+//     return next(new AppError("No tour found with the ID", 404));
+//   }
+
+//   res.status(204).json({
+//     status: "success",
+//     data: null,
+//   });
+// });
+
+//.........................
+// exports.getTour = catchAsync(async (req, res, next) => {
+//     const tour = await Tour.findById(req.params.id).populate("reviews");
+//     // or Tour.findOne({_id: req.params.id})
+
+//     if (!tour) {
+//       return next(new AppError("No tour found with the ID", 404));
+//     }
+
+//     res.status(200).json({
+//       status: "success",
+//       data: {
+//         tour,
+//       },
+//     });
+//   });
+
+//..........................
+// exports.getAllTours = catchAsync(async (req, res, next) => {
+//     //EXECUTE QUERY
+//     const features = new APIFeatures(Tour.find(), req.query)
+//       .filter()
+//       .sort()
+//       .limitFields()
+//       .pagination();
+//     const tours = await features.query;
+
+//     // const tours = await Tour.find()
+//     //   .where("duration")
+//     //   .equals(5)
+//     //   .where("difficulty")
+//     //   .equals("easy");
+
+//     //SEND RESPONSE
+//     res.status(200).json({
+//       status: "success",
+//       results: tours.length,
+//       data: {
+//         tours,
+//       },
+//     });
+//   });
+
+//......................
+// exports.getAllReviews = catchAsync(async (req, res, next) => {
+//     let filter = {};
+//     if (req.params.tourId) filter = { tour: req.params.tourId };
+//     const reviews = await Review.find(filter);
+
+//     res.status(200).json({
+//       status: "success",
+//       results: reviews.length,
+//       data: {
+//         reviews,
+//       },
+//     });
+//   });
