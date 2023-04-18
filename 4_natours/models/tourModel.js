@@ -122,6 +122,13 @@ tourSchema.virtual("durationWeeks").get(function () {
   return this.duration / 7;
 });
 
+//virtual populate
+tourSchema.virtual("reviews", {
+  ref: "Review",
+  foreignField: "tour",
+  localField: "_id",
+});
+
 //1. DOC MIDDLEWARE: runs b4 .save() and .create(). Doesn't work on .insertMany()
 tourSchema.pre("save", function (next) {
   this.slug = slugify(this.name, { lower: true });
