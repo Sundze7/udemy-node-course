@@ -5,7 +5,7 @@ const reviewSchema = new mongoose.Schema(
   {
     review: {
       type: String,
-      required: [true, "Review cannot br empty"],
+      required: [true, "Review cannot be empty"],
     },
     rating: {
       type: Number,
@@ -34,7 +34,7 @@ const reviewSchema = new mongoose.Schema(
 );
 
 // creating a unique combination of  tours and users to ensure a user can write only 1 review for a single tour
-reviewSchema.index({ tour: 1 }, { unique: true });
+reviewSchema.index({ tour: 1, user: 1 }, { unique: true });
 
 reviewSchema.pre(/^find/, function (next) {
   //   this.populate({
